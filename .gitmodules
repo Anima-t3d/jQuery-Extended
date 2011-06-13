@@ -1,0 +1,6 @@
+[submodule "jquery-animate-css-rotate-scale/jquery-animate-css-rotate-scale"]
+	path = jquery-animate-css-rotate-scale/jquery-animate-css-rotate-scale
+	url = https://github.com/zachstronaut/jquery-animate-css-rotate-scale.git
+[submodule "jquery-css-transform"]
+	path = jquery-css-transform
+	url = https://github.com/zachstronaut/jquery-css-transform.git
