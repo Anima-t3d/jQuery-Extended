@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>jQuery.blurIt::Sample</title>
+<style type="text/css">
+@import url(http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css);
+body{font-family:Georgia, "Times New Roman", Times, serif;margin:0;}
+#wrapper{width:960px;margin:auto;background:#CFCDA7;padding:10px;}
+#original_image{margin:auto;}
+#original_background{width:940px;height:1174px;background-image:url(images/elisha-cuthbert-picture-001.jpg);margin:auto;}
+#blurcontrol{min-height:10px;margin:10px;}
+#blurcontrol span{float:left;padding-right:20px;}
+#blur_slider{width:200px;float:left;}
+#blurlevel{padding-left:20px;}
+</style>
+<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+<script src="http://jquery-ui.googlecode.com/svn/tags/latest/ui/minified/jquery-ui.min.js" type="text/javascript"></script>
+
+<script src="js/jquery.blurit.js" type="text/javascript" ></script>
+<script type="text/javascript">
+$(function(){
+	MASTERBLUR = 67;
+	$("#blurlevel").html(MASTERBLUR);
+	$("#original_image").blurIt({"blurIt":MASTERBLUR});
+	$("#original_background").blurIt({"blurIt":MASTERBLUR});
+	$("#blur_slider").slider({
+			value:MASTERBLUR,
+			min: 0,
+			max: 100,
+			slide: function(event, ui) {
+				MASTERBLUR = ui.value;
+				$("#original_image").blurIt({"blurIt":MASTERBLUR});
+				$("#original_background").blurIt({"blurIt":MASTERBLUR});
+				$("#blurlevel").html(MASTERBLUR);
+			}
+		});
+
+});
+</script>
+
+</head>
+
+<body>
+<div id="wrapper">
+    <div id="blurcontrol">
+        <span>Blurlevel:</span><div id="blur_slider"></div><span id="blurlevel"></span>
+    </div>
+    <h2>IMG Image sample</h2>
+    <div id="original_image">
+    	<img src="images/elisha-cuthbert-picture-001.jpg" alt="" />
+    </div>
+    <h2>Div with a css background-image sample</h2>
+    <div id="original_background">
+    </div>
+    <p>For it to work you need to use an image editing software like photoshop or the gimp and apply a blur to the image (e.g. gaussian blur). The more blurred the more steps of blur you can have when applying the blurIt effect. Save the image with a suffix. default: _blur</p>
+    <p>So if you have original.jpg you save the blurred one as original_blur.jpg</p>
+    <p>You can use it by calling $(element).blurIt(options); e.g.$("#original_image").blurIt({"blurIt":67}); This will apply a 67% of the max of the blurred image.</p>
+    <p>It works both with a background-image as with an img tag image.</p>
+    <p><img src="images/sample.jpg" width="30%" alt="sample" title="Sample with original,50 blur and blurred" /></p>
+    <p>Image from <a href="http://www.imagesofcelebrities.info/1296340082-elisha-cuthbert-picture-001.jpg.htm">Images of celebrities</a></p>
+</div>
+</body>
+</html>

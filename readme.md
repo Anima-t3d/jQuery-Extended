@@ -7,6 +7,8 @@ is a **collection of useful jQuery plugins** the point of this collection is to 
 * Plugin list:
  * **Deepest:** A plugin to find the deepest element of the selector
  * **ElementFromPoint:** A jQuery implementation of the javascript elementFromPoint function
+ * **blurIt:** A plugin to enable dynamic blur on images through jQuery
+ * **customCursor:** A plugin to enable advanced features on custom cursors through jQuery
  * **Css Transform:** A plugin to enable css transform through jQuery
  * **Animate rotate/scale:** A plugin to animate rotation and scaling through jQuery
 

@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>jQuery CustomCursor:: testcase</title>
+<style type="text/css">
+body{background-color:#FCF;margin:0;}
+#output{position:fixed;bottom:0;left:0;}
+#outer{background-color:red;width:400px;height:400px;position:absolute;left:50%;top:50%;margin-left:-200px;margin-top:-200px;}
+#inner{background-color:#CCC;border:1px solid red;position:absolute;left:50px;top:30px;width:50px;height:50px;}
+.inner{background-color:#0CF;float:right;margin:5px;width:30px;height:30px;}
+</style>
+<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+<script src="js/jquery-css-transform.js" type="text/javascript"></script>
+<script src="js/jquery.preloader.js" type="text/javascript"></script>
+<script src="js/jquery.elementfrompoint.js" type="text/javascript"></script>
+<script src="js/jquery.customcursor.js" type="text/javascript"></script>
+<script type="text/javascript">
+function minimumHeight(element){
+	var elementHeight = $(element).outerHeight();
+	var documentHeight = $(document).height();
+	var windowHeight = $(window).height();
+	if(documentHeight > windowHeight){
+		var biggestHeight = documentHeight;
+	}else{
+		var biggestHeight = windowHeight;
+	}
+	if(biggestHeight > elementHeight){
+		$(element).height(biggestHeight-21);
+	}
+}
+function minimumWidth(element){
+	var elementWidth = $(element).outerWidth();
+	var documentWidth = $(document).width();
+	var windowWidth = $(window).width();
+	if(documentWidth > windowWidth){
+		var biggestWidth = documentWidth;
+	}else{
+		var biggestWidth = windowWidth;
+	}
+	if(biggestWidth > elementWidth){
+		$(element).width(biggestWidth-30);
+	}
+}
+
+$(window).resize(function() {
+	minimumHeight("body");
+	minimumWidth("body");//need fixing
+});
+
+//When the document is loaded excute the following code
+$(function(){
+	minimumHeight("body");
+	minimumWidth("body");
+	$('body').customcursor({"body":"images/3d_black.cur","#outer,a":"images/3d_black_Link_Select.cur","#inner,p":"images/squared_cursor.jpg"});
+	/*if $() not empty use as add to array else use passed array */
+});
+</script>
+</head>
+
+<body>
+<div id="outer">#outer
+    <div id="inner">#inner</div>
+    <div class="inner">.inner</div>
+    <div class="inner">.inner</div>
+</div>
+<h1>Plugins/Authoring</h1>
+<p>So you've become comfortable with <a href="http://www.jquery.com">jQuery</a> and would like to learn how to write your own plugins. Great! You're in the right spot. Extending <a href="http://www.jquery.com">jQuery</a> with plugins and methods is very powerful and can save you and your peers a lot of development time by abstracting your most clever functions into plugins. This post will outline the basics, best practices, and common pitfalls to watch out for as you begin writing your plugin. </p>
+<div id="output"></div>
+</body>
+</html>
